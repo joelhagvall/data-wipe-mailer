@@ -10,7 +10,7 @@ Swedish data brokers like MrKoll, Ratsit, and others collect and publish persona
 
 ## Features
 
-- ✅ **10 Swedish data brokers** - Send deletion requests to MrKoll, Ratsit, Birthday.se, Hitta, Eniro, Biluppgifter, Krimfup, Lexbase, Merinfo, and Upplysning
+- ✅ **8 Swedish data brokers** - Send deletion requests to MrKoll, Ratsit, Birthday.se, Hitta, Eniro, Biluppgifter, Merinfo, and Upplysning
 - ✅ **100% client-side** - No data is sent to any server, everything happens locally in your browser
 - ✅ **Bilingual** - Full support for Swedish and English
 - ✅ **mailto: links** - Opens pre-filled emails in your default mail app
@@ -19,7 +19,7 @@ Swedish data brokers like MrKoll, Ratsit, and others collect and publish persona
 
 ## Tech Stack
 
-- **[Next.js 15](https://nextjs.org/)** - React framework with App Router
+- **[Next.js 16](https://nextjs.org/)** - React framework with App Router
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety
 - **[Tailwind CSS](https://tailwindcss.com/)** - Styling
 - **[shadcn/ui](https://ui.shadcn.com/)** - UI components
