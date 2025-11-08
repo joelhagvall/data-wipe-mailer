@@ -16,10 +16,9 @@ export default function HomeClient() {
       try {
         const saved = localStorage.getItem('dw_lang') as Language | null;
         if (saved === 'sv' || saved === 'en') return saved;
-        if (window.navigator.language?.toLowerCase().startsWith('sv')) return 'sv';
-        return 'en';
       } catch {}
     }
+    // Default to Swedish for all new users
     return 'sv';
   });
 

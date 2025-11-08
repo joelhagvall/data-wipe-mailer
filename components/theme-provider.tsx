@@ -36,7 +36,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         }
       } catch {}
     }
-    return 'system'
+    return 'light'
   })
 
   // Apply class whenever theme changes (initial + updates)
