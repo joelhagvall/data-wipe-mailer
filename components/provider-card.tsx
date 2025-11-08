@@ -18,7 +18,12 @@ export function ProviderCard({ provider, description, selected, onToggle }: Prov
   const logoUrl = LogoHelper.getFaviconUrl(provider.email);
 
   return (
-    <Card className="transition-all hover:shadow-md">
+    <Card
+      className={`transition-all hover:shadow-md cursor-pointer ${
+        selected ? 'bg-green-50 dark:bg-green-950 border-green-500' : ''
+      }`}
+      onClick={() => onToggle(provider.id, !selected)}
+    >
       <CardHeader className="pb-3">
         <div className="flex items-start gap-4">
           <div className="shrink-0 mt-1">
@@ -37,12 +42,14 @@ export function ProviderCard({ provider, description, selected, onToggle }: Prov
               {description}
             </CardDescription>
           </div>
-          <Checkbox
-            id={provider.id}
-            checked={selected}
-            onCheckedChange={(checked) => onToggle(provider.id, checked as boolean)}
-            className="mt-1 shrink-0"
-          />
+          <div onClick={(e) => e.stopPropagation()}>
+            <Checkbox
+              id={provider.id}
+              checked={selected}
+              onCheckedChange={(checked) => onToggle(provider.id, checked as boolean)}
+              className="mt-1 shrink-0"
+            />
+          </div>
         </div>
       </CardHeader>
       <CardContent>
