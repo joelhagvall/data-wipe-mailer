@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Data Wipe Mailer
 
-## Getting Started
+**Your digital privacy is valuable** - exercise your right to delete personal data before it falls into the wrong hands.
 
-First, run the development server:
+A simple, privacy-focused web app to help you exercise your GDPR Article 17 right to erasure by sending deletion requests to Swedish data brokers and search services.
+
+## Why This Exists
+
+Swedish data brokers like MrKoll, Ratsit, and others collect and publish personal information about individuals. While legal, this data can be misused if it falls into the wrong hands. This tool makes it easy to request deletion of your personal data from multiple services at once.
+
+## Features
+
+- ✅ **10 Swedish data brokers** - Send deletion requests to MrKoll, Ratsit, Birthday.se, Hitta, Eniro, Biluppgifter, Krimfup, Lexbase, Merinfo, and Upplysning
+- ✅ **100% client-side** - No data is sent to any server, everything happens locally in your browser
+- ✅ **Bilingual** - Full support for Swedish and English
+- ✅ **mailto: links** - Opens pre-filled emails in your default mail app
+- ✅ **Mobile-friendly** - Fully responsive design
+- ✅ **GDPR-compliant templates** - Pre-written deletion request templates based on GDPR Article 17
+
+## Tech Stack
+
+- **[Next.js 15](https://nextjs.org/)** - React framework with App Router
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[Tailwind CSS](https://tailwindcss.com/)** - Styling
+- **[shadcn/ui](https://ui.shadcn.com/)** - UI components
+- **[Lucide Icons](https://lucide.dev/)** - Icons
+- **[Google Favicon API](https://www.google.com/s2/favicons)** - Company logos
+
+## Usage
+
+1. **Select recipients** - Choose which data brokers you want to send deletion requests to
+2. **Click "Open in mail app"** - Pre-filled emails will open in your default mail application
+3. **Fill in your details** - Add your personal identification number and name
+4. **Send** - Review and send the emails directly from your mail app
+
+## Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Privacy
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This application:
+- ✅ Runs entirely in your browser
+- ✅ Does not collect or store any personal data
+- ✅ Does not send any data to external servers (except company logos via Google Favicon API)
+- ✅ Uses only `mailto:` links to compose emails in your local mail application
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## License
 
-## Learn More
+MIT
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with privacy in mind by [Joel Hägvall](https://github.com/joelhagvall)
