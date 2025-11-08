@@ -1,0 +1,4 @@
+Contact: https://github.com/joelhagvall/data-wipe-mailer/security/advisories/new
+Expires: 2026-11-08T23:59:59.000Z
+Preferred-Languages: sv, en
+Canonical: https://data-wipe-mailer.vercel.app/.well-known/security.txt
