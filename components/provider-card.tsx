@@ -21,7 +21,7 @@ export function ProviderCard({ provider, description, selected, onToggle }: Prov
     <Card className="transition-all hover:shadow-md">
       <CardHeader className="pb-3">
         <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 mt-1">
+          <div className="shrink-0 mt-1">
             <Image
               src={logoUrl}
               alt={`${provider.name} logo`}
@@ -41,7 +41,7 @@ export function ProviderCard({ provider, description, selected, onToggle }: Prov
             id={provider.id}
             checked={selected}
             onCheckedChange={(checked) => onToggle(provider.id, checked as boolean)}
-            className="mt-1 flex-shrink-0"
+            className="mt-1 shrink-0"
           />
         </div>
       </CardHeader>

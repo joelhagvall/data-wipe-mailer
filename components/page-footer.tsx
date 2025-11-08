@@ -16,7 +16,7 @@ export function PageFooter({
   sourceCode,
 }: PageFooterProps) {
   return (
-    <div className="mt-12 pt-8 border-t">
+    <footer className="mt-12 pt-8 border-t">
       <div className="text-center text-sm text-muted-foreground space-y-2">
         <p>
           {footerGDPR}{' '}
@@ -43,6 +43,6 @@ export function PageFooter({
           </a>
         </p>
       </div>
-    </div>
+    </footer>
   );
 }

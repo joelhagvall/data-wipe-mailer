@@ -120,46 +120,4 @@
   }
 }
 
-/* Custom scrollbar for provider list */
-.provider-scroll {
-  /* Ensure the scrollbar area is reserved and visible */
-  overflow-y: scroll !important; /* force scrollbar visibility inside the card */
-  scrollbar-gutter: stable both-edges;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #000 hsl(var(--muted)); /* Firefox: black thumb on muted track */
-  /* Content fade (top & bottom) using mask for robust cross-browser rendering */
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,1) 24px, rgba(0,0,0,1) calc(100% - 24px), rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,1) 24px, rgba(0,0,0,1) calc(100% - 24px), rgba(0,0,0,0) 100%);
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-.provider-scroll::-webkit-scrollbar {
-  width: 12px;
-  display: block;
-}
-
-.provider-scroll::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
-  border-radius: 6px;
-  margin: 4px 0;
-}
-
-.provider-scroll::-webkit-scrollbar-thumb {
-  background: #000; /* solid black bar */
-  border-radius: 6px;
-  border: 2px solid hsl(var(--muted));
-}
-
-.provider-scroll::-webkit-scrollbar-thumb:hover {
-  background: #000; /* keep black on hover for clarity */
-}
-
-/* Corner when both scrollbars are present (WebKit) */
-.provider-scroll::-webkit-scrollbar-corner {
-  background: hsl(var(--muted));
-}
-
-/* Removed ::before/::after overlay in favor of mask-image fade */
+/* Scrollbar styles no longer needed — using shadcn ScrollArea */

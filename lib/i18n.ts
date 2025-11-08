@@ -1,4 +1,5 @@
 export type Language = 'sv' | 'en';
+import type { ProviderId } from '@/types/provider';
 
 export const translations = {
   sv: {
@@ -27,11 +28,9 @@ export const translations = {
       hitta: 'Sök- och karttjänst med personinformation',
       eniro: 'Sök- och telefonnummertjänst',
       biluppgifter: 'Söktjänst för fordons- och ägarinformation (inkl. personuppgifter om ägare)',
-      krimfup: 'Söktjänst för förundersökningar, domar och kriminalrelaterad information',
-      lexbase: 'Rättsdatabas med domar, beslut och personrelaterad rättsinformation',
       merinfo: 'Sök- och informationstjänst för privatpersoner',
       upplysning: 'Sök- och upplysningstjänst för personer och företag',
-    },
+    } as Record<ProviderId, string>,
   },
   en: {
     title: 'Data Wipe Mailer',
@@ -59,11 +58,9 @@ export const translations = {
       hitta: 'Search and map service with personal information',
       eniro: 'Search and phone number service',
       biluppgifter: 'Search service for vehicle and owner information (incl. personal data about owners)',
-      krimfup: 'Search service for preliminary investigations, judgments and crime-related information',
-      lexbase: 'Legal database with judgments, decisions and person-related legal information',
       merinfo: 'Search and information service for individuals',
       upplysning: 'Search and directory service for individuals and companies',
-    },
+    } as Record<ProviderId, string>,
   },
 };
 
@@ -71,6 +68,7 @@ export const emailTemplates = {
   sv: {
     subject: 'Begäran om radering av personuppgifter enligt GDPR',
     body: `Hej!
+
 
 Mitt personnummer är:
 
@@ -82,11 +80,13 @@ Ni kan hitta information om era skyldigheter på Integritetsskyddsmyndighetens w
 
 Jag ser fram emot bekräftelse på min begäran om radering snarast möjligt. Ni får gärna kontakta mig om ni har några frågor.
 
+
 Med vänliga hälsningar,`,
   },
   en: {
     subject: 'Request for deletion of personal data under GDPR',
     body: `Hello!
+
 
 My personal identification number is:
 
@@ -97,6 +97,7 @@ I request that all personal data associated with me be removed from your databas
 You can find information about your obligations on the Swedish Authority for Privacy Protection's website (https://www.imy.se).
 
 I look forward to confirmation of my deletion request as soon as possible. Please feel free to contact me if you have any questions.
+
 
 Best regards,`,
   },
