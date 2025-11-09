@@ -11,17 +11,20 @@ import { MailtoHelper } from '@/lib/mailto';
 import { ConfirmSend } from '@/components/confirm-send';
 
 export default function HomeClient() {
-  const [language, setLanguage] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('dw_lang') as Language | null;
-        if (saved === 'sv' || saved === 'en') return saved;
-      } catch {}
-    }
-    // Default to Swedish for all new users
-    return 'sv';
-  });
+  // Always use default value on initial render to avoid hydration mismatch
+  const [language, setLanguage] = useState<Language>('sv');
 
+  // Load saved language preference after initial render
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('dw_lang') as Language | null;
+      if (saved === 'sv' || saved === 'en') {
+        setLanguage(saved);
+      }
+    } catch {}
+  }, []);
+
+  // Save language preference when it changes
   useEffect(() => {
     try {
       localStorage.setItem('dw_lang', language);
@@ -45,14 +48,16 @@ export default function HomeClient() {
   const template = useMemo(() => emailTemplates[language], [language]);
 
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const [dontShowConfirm, setDontShowConfirm] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
+  // Always use default value on initial render to avoid hydration mismatch
+  const [dontShowConfirm, setDontShowConfirm] = useState<boolean>(false);
+
+  // Load saved preference after initial render
+  useEffect(() => {
     try {
-      return localStorage.getItem('dw_skip_confirm') === '1';
-    } catch {
-      return false;
-    }
-  });
+      const saved = localStorage.getItem('dw_skip_confirm') === '1';
+      setDontShowConfirm(saved);
+    } catch {}
+  }, []);
 
   const handleOpenInMail = useCallback(() => {
     const emails = selectedProviders.map((p) => p.email);
