@@ -4,7 +4,7 @@ export const providers: Provider[] = [
   {
     id: 'mrkoll',
     name: 'MrKoll',
-    email: 'kundservice@mrkoll.se',
+    email: 'hej@nusvar.se',
     category: 'söktjänst',
   },
   {
@@ -28,7 +28,7 @@ export const providers: Provider[] = [
   {
     id: 'eniro',
     name: 'Eniro',
-    email: 'personuppgifter@eniro.com',
+    email: 'personuppgiftsombud@eniro.com',
     category: 'söktjänst',
   },
   {

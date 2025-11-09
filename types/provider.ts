@@ -11,7 +11,7 @@ export type ProviderId =
   | 'eniro'
   | 'biluppgifter'
   | 'merinfo'
-  | 'upplysning';
+  | 'upplysning'
 
 export interface Provider {
   id: ProviderId;
