@@ -58,7 +58,6 @@ This application:
 - ✅ Does not send any data to external servers (except company logos via Google Favicon API)
 - ✅ Uses only `mailto:` links to compose emails in your local mail application
 - ✅ Puts recipients in BCC by default to protect their email addresses
-- ✅ Lägger mottagare i BCC som standard för att skydda deras e‑postadresser
 
 ## License
 
