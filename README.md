@@ -14,6 +14,7 @@ Swedish data brokers like MrKoll, Ratsit, and others collect and publish persona
 - ✅ **100% client-side** - No data is sent to any server, everything happens locally in your browser
 - ✅ **Bilingual** - Full support for Swedish and English
 - ✅ **mailto: links** - Opens pre-filled emails in your default mail app
+ 
 - ✅ **Mobile-friendly** - Fully responsive design
 - ✅ **GDPR-compliant templates** - Pre-written deletion request templates based on GDPR Article 17
 
@@ -56,6 +57,8 @@ This application:
 - ✅ Does not collect or store any personal data
 - ✅ Does not send any data to external servers (except company logos via Google Favicon API)
 - ✅ Uses only `mailto:` links to compose emails in your local mail application
+- ✅ Puts recipients in BCC by default to protect their email addresses
+- ✅ Lägger mottagare i BCC som standard för att skydda deras e‑postadresser
 
 ## License
 
