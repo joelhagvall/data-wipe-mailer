@@ -1,39 +1,29 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { PageHeader } from '@/components/page-header';
 import { PageFooter } from '@/components/page-footer';
 import { ProviderList } from '@/components/provider-list';
 import { SendButton } from '@/components/send-button';
 import { useProviderSelection } from '@/hooks/use-provider-selection';
+import { useLocalStorage } from '@/hooks/use-local-storage';
 import { translations, emailTemplates, type Language } from '@/lib/i18n';
 import { MailtoHelper } from '@/lib/mailto';
 import { ConfirmSend } from '@/components/confirm-send';
 
+const isValidLanguage = (value: unknown): value is Language =>
+  value === 'sv' || value === 'en';
+
 export default function HomeClient() {
-  // Always use default value on initial render to avoid hydration mismatch
-  const [language, setLanguage] = useState<Language>('sv');
-
-  // Load saved language preference after initial render
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('dw_lang') as Language | null;
-      if (saved === 'sv' || saved === 'en') {
-        setLanguage(saved);
-      }
-    } catch {}
-  }, []);
-
-  // Save language preference when it changes
-  useEffect(() => {
-    try {
-      localStorage.setItem('dw_lang', language);
-    } catch {}
-  }, [language]);
+  const [language, setLanguage] = useLocalStorage<Language>(
+    'dw_lang',
+    'sv',
+    isValidLanguage
+  );
 
   const toggleLanguage = useCallback(() => {
-    setLanguage((prev) => (prev === 'sv' ? 'en' : 'sv'));
-  }, []);
+    setLanguage(language === 'sv' ? 'en' : 'sv');
+  }, [language, setLanguage]);
 
   const {
     selectedProviderIds,
@@ -48,16 +38,10 @@ export default function HomeClient() {
   const template = useMemo(() => emailTemplates[language], [language]);
 
   const [confirmOpen, setConfirmOpen] = useState(false);
-  // Always use default value on initial render to avoid hydration mismatch
-  const [dontShowConfirm, setDontShowConfirm] = useState<boolean>(false);
-
-  // Load saved preference after initial render
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('dw_skip_confirm') === '1';
-      setDontShowConfirm(saved);
-    } catch {}
-  }, []);
+  const [dontShowConfirm, setDontShowConfirm] = useLocalStorage<boolean>(
+    'dw_skip_confirm',
+    false
+  );
 
   const handleOpenInMail = useCallback(() => {
     const emails = selectedProviders.map((p) => p.email);
@@ -115,12 +99,7 @@ export default function HomeClient() {
         cancelLabel={t.reminderCancel}
         continueLabel={t.reminderContinue}
         dontShow={dontShowConfirm}
-        onToggleDontShow={(val) => {
-          setDontShowConfirm(val);
-          try {
-            localStorage.setItem('dw_skip_confirm', val ? '1' : '0');
-          } catch {}
-        }}
+        onToggleDontShow={setDontShowConfirm}
         onCancel={() => setConfirmOpen(false)}
         onConfirm={() => {
           setConfirmOpen(false);
