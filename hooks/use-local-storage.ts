@@ -1,16 +1,22 @@
 'use client';
 
-import { useCallback, useSyncExternalStore } from 'react';
+import { useCallback, useRef, useSyncExternalStore } from 'react';
+
+type SetStateAction<T> = T | ((prev: T) => T);
 
 /**
  * A hook for reading/writing to localStorage that avoids hydration mismatches
  * and complies with React's rules about not calling setState in effects.
+ * Supports functional updates like useState: setValue(prev => newValue)
  */
 export function useLocalStorage<T>(
   key: string,
   defaultValue: T,
   validate?: (value: unknown) => value is T
-): [T, (value: T) => void] {
+): [T, (value: SetStateAction<T>) => void] {
+  // Keep a ref to the current value for functional updates
+  const valueRef = useRef<T>(defaultValue);
+
   const subscribe = useCallback(
     (callback: () => void) => {
       const handleStorage = (e: StorageEvent) => {
@@ -25,11 +31,19 @@ export function useLocalStorage<T>(
   const getSnapshot = useCallback(() => {
     try {
       const item = localStorage.getItem(key);
-      if (item === null) return defaultValue;
+      if (item === null) {
+        valueRef.current = defaultValue;
+        return defaultValue;
+      }
       const parsed = JSON.parse(item);
-      if (validate && !validate(parsed)) return defaultValue;
+      if (validate && !validate(parsed)) {
+        valueRef.current = defaultValue;
+        return defaultValue;
+      }
+      valueRef.current = parsed as T;
       return parsed as T;
     } catch {
+      valueRef.current = defaultValue;
       return defaultValue;
     }
   }, [key, defaultValue, validate]);
@@ -39,9 +53,13 @@ export function useLocalStorage<T>(
   const value = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const setValue = useCallback(
-    (newValue: T) => {
+    (action: SetStateAction<T>) => {
       try {
+        const newValue = typeof action === 'function'
+          ? (action as (prev: T) => T)(valueRef.current)
+          : action;
         localStorage.setItem(key, JSON.stringify(newValue));
+        valueRef.current = newValue;
         // Dispatch event so useSyncExternalStore re-renders
         window.dispatchEvent(new StorageEvent('storage', { key }));
       } catch {}

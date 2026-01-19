@@ -22,8 +22,8 @@ export default function HomeClient() {
   );
 
   const toggleLanguage = useCallback(() => {
-    setLanguage(language === 'sv' ? 'en' : 'sv');
-  }, [language, setLanguage]);
+    setLanguage((prev) => (prev === 'sv' ? 'en' : 'sv'));
+  }, [setLanguage]);
 
   const {
     selectedProviderIds,

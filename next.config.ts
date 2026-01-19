@@ -19,6 +19,11 @@ const nextConfig: NextConfig = {
   // Enable React Compiler (React 19)
   reactCompiler: true,
 
+  // Optimize barrel imports for faster builds and smaller bundles
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
+
   // Remove the X-Powered-By header in production
   poweredByHeader: false,
 

@@ -1,22 +1,22 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { providers } from '@/data/providers';
 
 export function useProviderSelection() {
   const [selectedProviderIds, setSelectedProviderIds] = useState<Record<string, boolean>>({});
 
-  const handleToggle = (providerId: string, checked: boolean) => {
+  const handleToggle = useCallback((providerId: string, checked: boolean) => {
     setSelectedProviderIds((prev) => ({ ...prev, [providerId]: checked }));
-  };
+  }, []);
 
-  const handleSelectAll = () => {
-    const allSelected = providers.every((p) => selectedProviderIds[p.id]);
-    if (allSelected) {
-      setSelectedProviderIds({});
-    } else {
-      const allIds = providers.reduce((acc, p) => ({ ...acc, [p.id]: true }), {});
-      setSelectedProviderIds(allIds);
-    }
-  };
+  const handleSelectAll = useCallback(() => {
+    setSelectedProviderIds((prev) => {
+      const allSelected = providers.every((p) => prev[p.id]);
+      if (allSelected) {
+        return {};
+      }
+      return providers.reduce((acc, p) => ({ ...acc, [p.id]: true }), {});
+    });
+  }, []);
 
   const allProvidersSelected = useMemo(
     () => providers.every((p) => selectedProviderIds[p.id]),
