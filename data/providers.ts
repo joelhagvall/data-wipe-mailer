@@ -50,7 +50,7 @@ export const providers: Provider[] = [
     category: 'söktjänst',
   },
   {
-    id: 'idm-adress',
+    id: 'idmadress',
     name: 'Idédata Marketing AB',
     email: 'kundservice@idm-adress.se',
     category: 'datamäklare',
