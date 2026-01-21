@@ -49,4 +49,10 @@ export const providers: Provider[] = [
     email: 'info@upplysning.se',
     category: 'söktjänst',
   },
+  {
+    id: 'idmadress',
+    name: 'Idédata Marketing AB',
+    email: 'kundservice@idm-adress.se',
+    category: 'datamäklare',
+  }
 ];
