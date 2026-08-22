@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const isProd = process.env.NODE_ENV === 'production';
 
 const securityHeaders: { key: string; value: string }[] = [
+  // Responses differ by Accept (text/html vs text/markdown, see proxy.ts)
+  { key: 'Vary', value: 'Accept' },
   { key: 'X-Frame-Options', value: 'DENY' },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },

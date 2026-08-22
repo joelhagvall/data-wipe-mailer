@@ -38,7 +38,9 @@ export function ProviderList({
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center gap-2">
-              <CardTitle>{t.selectRecipients}</CardTitle>
+              <CardTitle asChild>
+                <h2>{t.selectRecipients}</h2>
+              </CardTitle>
               <Badge>{selectedCount}</Badge>
             </div>
             <CardDescription>

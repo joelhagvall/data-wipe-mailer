@@ -37,7 +37,9 @@ export function ProviderCard({ provider, description, selected, onToggle }: Prov
             />
           </div>
           <div className="flex-1 min-w-0">
-            <CardTitle className="text-lg">{provider.name}</CardTitle>
+            <CardTitle asChild className="text-lg">
+              <h3>{provider.name}</h3>
+            </CardTitle>
             <CardDescription className="mt-1.5">
               {description}
             </CardDescription>

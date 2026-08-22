@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsWrapper } from "@/components/analytics-wrapper";
+import { JsonLd } from "@/components/json-ld";
+import { GITHUB_URL, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,24 +16,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const TITLE = "Data Wipe Mailer - Protect Your Digital Privacy";
+const DESCRIPTION = "Your digital privacy is valuable - exercise your right to delete personal data before it falls into the wrong hands.";
+
 export const metadata: Metadata = {
-  title: "Data Wipe Mailer - Protect Your Digital Privacy",
-  description: "Your digital privacy is valuable - exercise your right to delete personal data before it falls into the wrong hands.",
+  title: { default: TITLE, template: `%s | ${SITE_NAME}` },
+  description: DESCRIPTION,
   keywords: ["data privacy", "GDPR", "personal data deletion", "digital privacy", "data protection", "privacy rights", "Sweden"],
-  authors: [{ name: "Data Wipe Mailer" }],
-  metadataBase: new URL('https://data-wipe-mailer.vercel.app'),
+  authors: [{ name: "Data Wipe Mailer", url: GITHUB_URL }],
+  metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "Data Wipe Mailer - Protect Your Digital Privacy",
-    description: "Your digital privacy is valuable - exercise your right to delete personal data before it falls into the wrong hands.",
-    url: 'https://data-wipe-mailer.vercel.app',
-    siteName: 'Data Wipe Mailer',
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: 'sv_SE',
+    alternateLocale: ['en_US'],
     type: 'website',
+    images: [{ url: '/image.png', width: 1015, height: 1015, alt: 'Data Wipe Mailer logo' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Data Wipe Mailer - Protect Your Digital Privacy",
-    description: "Your digital privacy is valuable - exercise your right to delete personal data before it falls into the wrong hands.",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ['/image.png'],
   },
   robots: {
     index: true,
@@ -59,6 +67,7 @@ export default function RootLayout({
             __html: `(()=>{try{var t=localStorage.getItem('dw_theme');var d=t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`,
           }}
         />
+        <JsonLd />
         <ThemeProvider>
           {children}
         </ThemeProvider>
