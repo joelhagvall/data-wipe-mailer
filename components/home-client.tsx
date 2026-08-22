@@ -10,7 +10,6 @@ import { useLocalStorage } from '@/hooks/use-local-storage';
 import { translations, emailTemplates, type Language } from '@/lib/i18n';
 import { MailtoHelper } from '@/lib/mailto';
 import { ConfirmSend } from '@/components/confirm-send';
-import { HowItWorks } from '@/components/how-it-works';
 
 const isValidLanguage = (value: unknown): value is Language =>
   value === 'sv' || value === 'en';
@@ -83,9 +82,8 @@ export default function HomeClient() {
         label={t.openInMail}
       />
 
-      <HowItWorks language={language} />
-
       <PageFooter
+        language={language}
         footerGDPR={t.footerGDPR}
         footerLearnMore={t.footerLearnMore}
         footerIMY={t.footerIMY}

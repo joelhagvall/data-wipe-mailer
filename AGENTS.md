@@ -22,6 +22,6 @@ Next.js 16 (App Router, React 19, Tailwind 4, shadcn/ui) app that opens pre-fill
 - Agent-readiness is measured with `npx is-agentic data-wipe-mailer.vercel.app` (CLI only reads the cached report; a fresh scan must be started at https://is-agentic.com).
 
 ## Conventions
-- Language is client-side state (`dw_lang` in localStorage); server-rendered pages show Swedish first, then English.
+- Language is client-side state (`dw_lang` in localStorage); /about, /contact, /privacy read the same key and render only the selected language (SSR default sv). Markdown versions (proxy/.md) are bilingual for agents.
 - Keep headings semantic (`h1` → `h2` → `h3`; use `<CardTitle asChild><h2>…`).
 - Don't invent contact details (emails, addresses) for the project; use GitHub issues / security advisories.
