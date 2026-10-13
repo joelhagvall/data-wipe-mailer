@@ -12,6 +12,7 @@ export type ProviderId =
   | 'biluppgifter'
   | 'merinfo'
   | 'upplysning'
+  | 'idmadress'
 
 export interface Provider {
   id: ProviderId;

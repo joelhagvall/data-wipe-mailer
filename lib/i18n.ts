@@ -31,6 +31,7 @@ export const translations = {
       biluppgifter: 'Söktjänst för fordons- och ägarinformation (inkl. personuppgifter om ägare)',
       merinfo: 'Sök- och informationstjänst för privatpersoner',
       upplysning: 'Sök- och upplysningstjänst för personer och företag',
+      idmadress: 'Säljer dina personuppgifter utan att behöva uppge källa',
     } as Record<ProviderId, string>,
   },
   en: {
@@ -62,6 +63,7 @@ export const translations = {
       biluppgifter: 'Search service for vehicle and owner information (incl. personal data about owners)',
       merinfo: 'Search and information service for individuals',
       upplysning: 'Search and directory service for individuals and companies',
+      idmadress: 'Sells your personal information without having to say where they got them from',
     } as Record<ProviderId, string>,
   },
 };
